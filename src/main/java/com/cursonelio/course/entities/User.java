@@ -1,15 +1,23 @@
 package com.cursonelio.course.entities;
 
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name = "tb_user")
 public class User implements Serializable {//serializable quando
     // queremos que os objetos possam ser tramsformados em cadeia de bytes
     //para que objeto trafegue na rede, seja gravado em arquivos
     private static final long serialVersionUID = 1L;
+    //@Id pra falar que é a chave primária
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //autoincremento
     private Long id;
     private String name;
     private String email;
+
     private String phone;
     private String password;
 
@@ -38,6 +46,14 @@ public class User implements Serializable {//serializable quando
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPhone() {
