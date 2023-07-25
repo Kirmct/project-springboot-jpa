@@ -2,7 +2,6 @@ package com.cursonelio.course.resources;
 
 import com.cursonelio.course.entities.Order;
 import com.cursonelio.course.services.OrderService;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

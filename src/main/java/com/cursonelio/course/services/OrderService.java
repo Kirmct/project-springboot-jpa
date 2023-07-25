@@ -1,7 +1,6 @@
 package com.cursonelio.course.services;
 
 import com.cursonelio.course.entities.Order;
-import com.cursonelio.course.entities.User;
 import com.cursonelio.course.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
