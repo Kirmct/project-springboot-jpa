@@ -22,7 +22,10 @@ public class Product implements Serializable {
 
     //usando set pois este nao aceita repeticao
     //um produto pode ter mais de uma categoria, mas nao a mesma duas ou mais vezes
-    @Transient
+    @ManyToMany
+    @JoinTable(name = "tb_product_category",//nome da tabela e associaca no banco de dados
+            joinColumns = @JoinColumn(name = "product_id"), //nome da chave estrangeira referente a classe que estamos(produto)
+            inverseJoinColumns = @JoinColumn(name = "category_id"))//chave estrangeira da outra entidade
     private Set<Category> categories = new HashSet<>();
 
     public Product() {
