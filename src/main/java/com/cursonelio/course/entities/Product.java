@@ -28,6 +28,10 @@ public class Product implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "category_id"))//chave estrangeira da outra entidade
     private Set<Category> categories = new HashSet<>();
 
+    //colecao de orderItem associado ao meu produto
+    @OneToMany(mappedBy = "id.product")//pois temos que buscar todos os orders assosciado ao product
+    private Set<OrderItem> items = new HashSet<>();
+
     public Product() {
     }
 
@@ -37,6 +41,14 @@ public class Product implements Serializable {
         this.description = description;
         this.price = price;
         this.imgUrl = imgUrl;
+    }
+    @JsonIgnore //para nao dar loop
+    public Set<Order> getOrders(){
+        Set<Order> set = new HashSet<>();
+        for (OrderItem x : items){
+            set.add(x.getOrder());
+        }
+        return set;
     }
 
     public Long getId() {

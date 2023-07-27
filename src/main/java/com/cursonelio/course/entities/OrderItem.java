@@ -30,16 +30,22 @@ public class OrderItem implements Serializable {
     public Order getOrder(){
         return id.getOrder();
     }
+
     public void setOrder(Order order){
         id.setOrder(order);
     }
+
+
     public Product getProduct(){
         return id.getProduct();
     }
+
     public void setOProduct(Product product){
         id.setProduct(product);
     }
 
+
+    //gettes e setters normais
     public Integer getQuantity() {
         return quantity;
     }

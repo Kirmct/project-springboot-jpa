@@ -27,6 +27,7 @@ public class Order implements Serializable {
 
     @OneToMany(mappedBy = "id.order")//pois o order item temos o id, mas no id que temos o pedido
     private Set<OrderItem> items = new HashSet<>();
+
     public Order() {
     }
     public Order(Long id, Instant moment, OrderStatus orderStatus, User client) {
