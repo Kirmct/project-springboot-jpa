@@ -32,12 +32,18 @@ public class UserResource {
         return ResponseEntity.ok().body(obj);
     }
 
-    @PostMapping
-    public ResponseEntity<User> insert(@RequestBody User obj){
+    @PostMapping//pois é um método de insercao
+    public ResponseEntity<User> insert(@RequestBody User obj){//falar que no corpo teremos um obj
         obj = service.insert(obj);
         //fazemos deste modo para na resposta da request venha o codigo 201, nao o 200
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).body(obj);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){ //Void pois nao retorna nada
+        service.delete(id);
+        return ResponseEntity.noContent().build(); //pois nao temos corpo/conteudo de resposta
     }
 }
