@@ -28,6 +28,9 @@ public class Order implements Serializable {
     @OneToMany(mappedBy = "id.order")//pois o order item temos o id, mas no id que temos o pedido
     private Set<OrderItem> items = new HashSet<>();
 
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL) //no 1x1, mapeamos as duas entidades para ter o mesmo id
+    private Payment payment;
+
     public Order() {
     }
     public Order(Long id, Instant moment, OrderStatus orderStatus, User client) {
@@ -35,6 +38,14 @@ public class Order implements Serializable {
         this.moment = moment;
         setOrderStatus(orderStatus);
         this.client = client;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 
     public Set<OrderItem> getItems(){
