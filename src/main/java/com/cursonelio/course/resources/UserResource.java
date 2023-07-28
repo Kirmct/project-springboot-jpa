@@ -9,6 +9,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 
 //RestController, fala que é um recurso web controlado pelo rest
@@ -45,5 +46,11 @@ public class UserResource {
     public ResponseEntity<Void> delete(@PathVariable Long id){ //Void pois nao retorna nada
         service.delete(id);
         return ResponseEntity.noContent().build(); //pois nao temos corpo/conteudo de resposta
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User obj){
+        obj = service.update(id, obj);
+        return ResponseEntity.ok().body(obj);
     }
 }
